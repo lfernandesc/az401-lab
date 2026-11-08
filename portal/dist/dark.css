@@ -1,0 +1,50 @@
+.theme-toggle{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:20px;padding:8px 12px;font-size:11px;white-space:nowrap;min-height:34px}
+:root[data-theme=dark]{--paper:#101b18;--ink:#e0eae1;--muted:#a4b7aa;--line:#32483c;--green:#98ceae;--light:#253c2e;--white:#192922;color-scheme:dark}
+[data-theme=dark] .sidebar,[data-theme=dark] .card,[data-theme=dark] .stat,[data-theme=dark] .reading,[data-theme=dark] .mapcanvas,[data-theme=dark] .search,[data-theme=dark] select,[data-theme=dark] .option,[data-theme=dark] .chip,[data-theme=dark] .questiondots button{background:#192922;color:var(--ink)}
+[data-theme=dark] .topbar{background:#14221c}
+[data-theme=dark] nav a{color:#a8bdae}
+[data-theme=dark] nav a.active,[data-theme=dark] nav a:hover{background:#2a4030;color:#dcecc8}
+[data-theme=dark] .navlabel,[data-theme=dark] .eyebrow,[data-theme=dark] .topright,[data-theme=dark] footer,[data-theme=dark] .notice,[data-theme=dark] .sidebar-bottom p,[data-theme=dark] .sidebar-bottom small,[data-theme=dark] .side-progress small{color:#a3b6a6}
+[data-theme=dark] .sidebar-bottom strong{color:#ccdeca}
+[data-theme=dark] .tag{background:#2c432f;color:#c3d5a8}
+[data-theme=dark] .avatar{background:#2c432f;border-color:#526b48;color:#d0dfbf}
+[data-theme=dark] .bar{background:#304538}
+[data-theme=dark] .bar i{background:#9cbd7c}
+[data-theme=dark] .btn{background:#263d2e;color:#deead8;border-color:#445e48}
+[data-theme=dark] .btn.primary{background:#dce9b4;color:#274631;border-color:transparent}
+[data-theme=dark] .btn.dark,[data-theme=dark] .chip.active{background:#acd49a;color:#1e3925;border-color:transparent}
+[data-theme=dark] .link,[data-theme=dark] .textbtn,[data-theme=dark] .reading a{color:#acd8b8}
+[data-theme=dark] .hero{background:#1b3e32;border:1px solid #355540}
+[data-theme=dark] .quickcard{background:#273d2c;border-color:#3f5740}
+[data-theme=dark] .quickcard p,[data-theme=dark] .stat span,[data-theme=dark] .stat small,[data-theme=dark] .domainrow small,[data-theme=dark] .reading p,[data-theme=dark] .reading li{color:#b0c2b2}
+[data-theme=dark] .domainrow{border-color:var(--line)}
+[data-theme=dark] .domainicon{background:color-mix(in srgb,var(--c) 28%,#192922);color:#dce8db}
+[data-theme=dark] .labcard .labnum{color:#c2d6bc}
+[data-theme=dark] .status{background:#2a3d2e;color:#c2d0bb}
+[data-theme=dark] .status.done{background:#314f34;color:#b6d9a5}
+[data-theme=dark] .reading code:not(pre code){background:#2b4231;color:#d3e7c7}
+[data-theme=dark] .reading pre{background:#0d1c15;border:1px solid #36533c;color:#dcebd7}
+[data-theme=dark] .reading th{background:#293f2e}
+[data-theme=dark] .mapdetail .concept{background:#2a4030;color:#d0dfc8}
+[data-theme=dark] .mindmap>rect{fill:#192922}
+[data-theme=dark] .mindmap .node rect{fill:#223a2a;stroke:#526d52}
+[data-theme=dark] .mindmap .node[aria-pressed=true] rect{fill:#365337;stroke:#b1cf8e}
+[data-theme=dark] .mindmap .node text{fill:#c8dac2}
+[data-theme=dark] .mindmap .node text:nth-of-type(2){fill:#f0f5e9}
+[data-theme=dark] .mindmap .node:hover rect,[data-theme=dark] .mindmap .node:focus rect{stroke:#d3e8a9}
+[data-theme=dark] .mapmini span{background:#2a4230;border-color:#729262}
+[data-theme=dark] .mapmini b{background:#3a5737;color:#e0ebd0}
+[data-theme=dark] .option span{border-color:#64765e}
+[data-theme=dark] .option.selected{background:#304b32;border-color:#a2bf84}
+[data-theme=dark] .option.correct{background:#2e4d32;border-color:#91bd7b}
+[data-theme=dark] .option.wrong{background:#50342e;border-color:#d39787}
+[data-theme=dark] .explain{background:#2c4530;color:#e0ead6}
+[data-theme=dark] .explain.error{background:#4b332d;color:#f1d9cc}
+[data-theme=dark] .questiondots .answered{background:#3a5536;color:#e3eed5}
+[data-theme=dark] .questiondots .current{outline-color:#c0d792}
+[data-theme=dark] .resultscore{color:#b4d69d}
+[data-theme=dark] .scenario textarea{background:#14241b;color:#e1ebdc;border-color:#466145}
+[data-theme=dark] input::placeholder,[data-theme=dark] textarea::placeholder{color:#9caf9b;opacity:1}
+[data-theme=dark] .copybtn{background:#36563b;border-color:#709163;color:#edf3df}
+@media(max-width:760px){.topright{gap:8px}.theme-toggle{font-size:10px;padding:6px 9px}.topright .avatar{display:none}.topbar>.eyebrow{max-width:100px;line-height:1.5}}
+
