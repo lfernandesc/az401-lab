@@ -1,0 +1,19 @@
+import fs from 'node:fs';
+const raw=fs.readFileSync('../docs/GUIA-COMPLETO-AZ401.md','utf8').trim();
+const source=raw.slice(0,raw.indexOf('## Questionário'));
+const parts=source.split(/(?=^## L\d{2} — )/m);
+const groups=[{id:'process',name:'Processos e colaboração',weight:'15–20%',labs:[1,2,3],color:'#259681',concepts:['Traceability','Success metrics','Azure Boards','MCP servers','Agents · skills · loops']},{id:'git',name:'Source control',weight:'10–15%',labs:[4,5],color:'#6482c5',concepts:['Branch strategies','PR policies','Git recovery','Hooks · tags','Repository migration']},{id:'pipelines',name:'Build e release',weight:'35–40%',labs:[6,7,8,9,10,11,12,13,14],color:'#b27b40',concepts:['Packages · versioning','Testing · quality gates','YAML · runners','Agentic Workflows','Deployment · IaC · retention']},{id:'security',name:'Security e compliance',weight:'15–20%',labs:[15,16,17],color:'#aa6f92',concepts:['Identities · OIDC','RBAC · permissions','Key Vault · secrets','Security scanning','Defender for Cloud']},{id:'observe',name:'Instrumentation',weight:'15–20%',labs:[18,19,20],color:'#548c9e',concepts:['Logs · metrics · traces','KQL · dashboards','Application Insights','Observability Agent','Azure SRE Agent']}];
+const labs=parts.slice(1).map(p=>{const m=p.match(/^## L(\d{2}) — (.+)/);const n=+m[1];return {id:n,title:m[2],domain:groups.find(g=>g.labs.includes(n)).id,body:p.trim()};});
+const quizBlock=raw.split('## Questionário')[1].split('### Answer key')[0];
+const questions=[...quizBlock.matchAll(/\*\*(\d+)\.\*\* ([\s\S]*?)(?=\n\*\*\d+\.\*\*|$)/g)].map(m=>{const lines=m[2].trim().split('\n');return {id:+m[1],prompt:lines[0],options:lines.slice(1).filter(l=>/^[A-D]\. /.test(l)).map(l=>l.slice(3))};});
+const answers=raw.split('### Answer key and explanations')[1].split('### Additional')[0];
+questions.forEach(q=>{const m=answers.match(new RegExp('(?:^|\\n)'+q.id+' \\*\\*([A-D])\\*\\* — (.+)'));if(!m)throw Error('Missing answer '+q.id);q.answer=m[1].charCodeAt(0)-65;q.explanation=m[2];if(q.options.length!==4)throw Error('Missing options '+q.id);});
+const additional=raw.split('### Additional scenario questions')[1].split('## Fontes')[0];
+const scenarioQuestions=additional.split('**41:')[0];
+const scenarios=[...scenarioQuestions.matchAll(/\*\*(\d+)\. ([\s\S]*?)(?=\n\*\*\d+\.|$)/g)].map(m=>{const n=+m[1];const answer=additional.match(new RegExp('\\*\\*'+n+':([\\s\\S]*?)(?=\\n\\*\\*\\d+:|$)'));return {id:n,prompt:m[2].replace('**','').trim(),answer:(answer?.[1]||'').replace('**','').trim()};});
+if(labs.length!==20||questions.length!==40||scenarios.length!==10)throw Error('Content counts invalid');
+const starter=fs.readFileSync('starter.md','utf8');
+fs.writeFileSync('dist/data.js','window.COURSE='+JSON.stringify({groups,labs,questions,scenarios,starter,introduction:parts[0],version:'2026-11-08'})+';');
+fs.copyFileSync('../docs/GUIA-COMPLETO-AZ401.md','dist/guia-completo.md');
+console.log(JSON.stringify({labs:labs.length,questions:questions.length,scenarios:scenarios.length}));
+
