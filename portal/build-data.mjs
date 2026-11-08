@@ -13,7 +13,9 @@ const scenarioQuestions=additional.split('**41:')[0];
 const scenarios=[...scenarioQuestions.matchAll(/\*\*(\d+)\. ([\s\S]*?)(?=\n\*\*\d+\.|$)/g)].map(m=>{const n=+m[1];const answer=additional.match(new RegExp('\\*\\*'+n+':([\\s\\S]*?)(?=\\n\\*\\*\\d+:|$)'));return {id:n,prompt:m[2].replace('**','').trim(),answer:(answer?.[1]||'').replace('**','').trim()};});
 if(labs.length!==20||questions.length!==40||scenarios.length!==10)throw Error('Content counts invalid');
 const starter=fs.readFileSync('starter.md','utf8');
-fs.writeFileSync('dist/data.js','window.COURSE='+JSON.stringify({groups,labs,questions,scenarios,starter,introduction:parts[0],version:'2026-11-08'})+';');
+const prerequisites=fs.readFileSync('prerequisites.md','utf8');
+fs.writeFileSync('dist/data.js','window.COURSE='+JSON.stringify({groups,labs,questions,scenarios,starter,prerequisites,introduction:parts[0],version:'2026-11-08'})+';');
+fs.copyFileSync('prerequisites.md','dist/pre-requisitos.md');
 fs.copyFileSync('../docs/GUIA-COMPLETO-AZ401.md','dist/guia-completo.md');
 console.log(JSON.stringify({labs:labs.length,questions:questions.length,scenarios:scenarios.length}));
 
