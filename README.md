@@ -1,3 +1,5 @@
+> **Portal interativo:** [DevOps Atlas — AZ-401](https://az401-study-lucas.saltybeach4.chatgpt.site) · [Código e instruções](portal/README.md). Acesso privado do proprietário; progresso guardado neste navegador, com export/import.
+
 > **Percurso completo AZ-401:** começa pelo [guia com 20 laboratórios e 50 perguntas em inglês](docs/GUIA-COMPLETO-AZ401.md). O README abaixo mantém o starter prático da Orders API; o guia acrescenta os aprofundamentos e o mapa de cobertura. Usa os ambientes existentes, sem recriar o repository/project. Revê a configuração OIDC no L15 antes de copiar o exemplo antigo deste README.
 
 # Lab guiado AZ-401 — Agentic DevOps de ponta a ponta
